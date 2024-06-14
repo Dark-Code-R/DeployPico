@@ -18,10 +18,11 @@ def upload():
         return jsonify({"error": "No content provided"}), 400
 
     # Guarda el contenido en un archivo
-    with open("archivo_lista.txt", "w") as file:
+    file_path = "archivo_lista.txt"
+    with open(file_path, "w") as file:
         file.write(content)
 
-    return jsonify({"message": "Data received and saved"}), 200
+    return jsonify({"message": "Data received and saved", "file_path": file_path}), 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
